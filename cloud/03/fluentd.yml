@@ -1,13 +1,19 @@
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1beta2 
 kind: DaemonSet
 metadata:
   name: fluentd
-  namespace: kube-system
+  namespace: default #kube-system
   labels:
     k8s-app: fluentd-logging
     version: v1
     kubernetes.io/cluster-service: "true"
 spec:
+  selector:
+    matchLabels:
+      k8s-app: fluentd-logging
+    #matchExpressions:
+    #  - { key: app, operator: In, values: [ redis, guestbook] }
+    #  - { key: tier, operator: In, values: [backend, frontend]}
   template:
     metadata:
       labels:

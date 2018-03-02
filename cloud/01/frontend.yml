@@ -31,6 +31,7 @@ spec:
       labels:
         app: guestbook
         tier: frontend
+        k8s-app: fluentd-logging        
     spec:
       containers:
       - name: php-redis

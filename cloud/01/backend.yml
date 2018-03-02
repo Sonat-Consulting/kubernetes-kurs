@@ -25,6 +25,7 @@ spec:
       app: redis
       role: master
       tier: backend
+  
   replicas: 1
   template:
     metadata:
@@ -32,6 +33,7 @@ spec:
         app: redis
         role: master
         tier: backend
+        k8s-app: fluentd-logging        
     spec:
       containers:
       - name: master
@@ -76,6 +78,7 @@ spec:
         app: redis
         role: slave
         tier: backend
+        k8s-app: fluentd-logging        
     spec:
       containers:
       - name: slave
