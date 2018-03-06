@@ -46,12 +46,16 @@ spec:
         - containerPort: 9300
           name: cluster
         env:
+          - name: discovery.zen.minimum_master_nodes
+            value: "1"
+          - name: discovery.zen.ping.unicast.hosts
+            value: "elasticsearch-0.elasticsearch.john.svc.cluster.local,elasticsearch-1.elasticsearch.john.svc.cluster.local,elasticsearch-2.elasticsearch.john.svc.cluster.local"
           - name: NODE_NAME
             valueFrom:
               fieldRef:
                 fieldPath: metadata.name
           - name: CLUSTER_NAME
-            value: klasken
+            value: logging
           - name: NODE_MASTER
             value: "false"
           - name: NODE_INGEST
@@ -110,7 +114,6 @@ spec:
           env:
             - name: SERVER_NAME
               value: "kibana"
-            #- name: XPACK_MONITORING_ENABLED
             - name: xpack.monitoring.enabled
               value: "false"
             - name: ELASTICSEARCH_URL

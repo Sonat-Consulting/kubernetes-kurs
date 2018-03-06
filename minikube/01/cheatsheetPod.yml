@@ -5,7 +5,7 @@ metadata:
 spec:
   containers:
   - name: cheatsheeet
-    image: sonatconsulting/kubernetes-cheat:0.8
+    image: sonatconsulting/kubernetes-cheat:1.2
     ports:
       - containerPort: 80
         name: web    

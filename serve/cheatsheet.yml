@@ -1,4 +1,4 @@
-apiVersion: apps/v1
+apiVersion: apps/v1beta2
 kind: Deployment
 metadata:
   name: cheatsheet
@@ -26,14 +26,25 @@ spec:
             port: 80
           initialDelaySeconds: 3
           periodSeconds: 3
+ 
 ---
 apiVersion: v1
 kind: Service
 metadata:
   name: cheatsheet
+  labels:
+    app: my-awesome-app
+    dns: route53
+  annotations:
+    domainName: "cheat.spasmodic.info"
+    #service.beta.kubernetes.io/aws-load-balancer-ssl-cert: |-
+    #  arn:aws:acm:us-east-1:659153740712:certificate/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+    service.beta.kubernetes.io/aws-load-balancer-backend-protocol: http
 spec:
-  type: NodePort
+  type: LoadBalancer
   ports:
-    - port: 80
+    - name: http
+      port: 80
+      protocol: TCP
   selector:
     app: cheatsheet
