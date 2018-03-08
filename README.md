@@ -1,57 +1,16 @@
-# kubernetes-fagdag
-Kjøring av en enkelt pod, Oppsett av cats and dogs applikasjonen til fagdag. Har oppsett til minikube og azure
+# Kubernetes introduksjons kurs
 
 
-### Minikube oppgave 
+## Installasjon av påkrevde verktøy
 
-## Start minikube og list servicer
-```
-minikube start
-```
+* [Virtualbox](https://www.virtualbox.org)
+* [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl)
+* [minikube](https://kubernetes.io/docs/tasks/tools/install-minikube) 
 
-Se hvilke servicer som er eksponert
-```
-minikube service list
-```
 
-## Deploy backend
-```
-kubectl create -f backend.yml
-```
+## Guide 
 
-Sjekk at deploy finnes
-```
-kubectl get deploy
-```
+Guide med kommandoer og oversikt over verktøy finnes her
 
-Sjekk at pod finnes
-```
-kubectl get pod
-```
-
-## Deploy frontend
-```
-kubectl create -f frontend.yml
-```
-
-Sjekk at deploy finnes
-```
-kubectl get deploy
-```
-
-Sjekk at pod finnes
-```
-kubectl get pod
-```
-
-Sjekk at servicer er eksponert
-```
-kubectl get service
-```
-
-## Sjekk at samme servicer finnes i minikube, og åpne frontenden i browser
-```
-minikube service list
-minikube service frontend
-```
+[https://guide.skaugeweb.net](https://guide.skaugeweb.net)
 
