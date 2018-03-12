@@ -33,7 +33,6 @@ spec:
         app: redis
         role: master
         tier: backend
-        k8s-app: fluentd-logging        
     spec:
       containers:
       - name: master
