@@ -69,14 +69,6 @@ spec:
             port: 9200
           initialDelaySeconds: 6
           periodSeconds: 4
-        #volumeMounts:
-        #  - mountPath: /usr/share/elasticsearch/data
-        #    name: elastic-data
-     # volumes:
-     #   - name: elastic-data
-     #     hostPath:
-     #       path: /data/volumes/elasticsearch
-     #       type: DirectoryOrCreate
 ---
 apiVersion: v1
 kind: Service
