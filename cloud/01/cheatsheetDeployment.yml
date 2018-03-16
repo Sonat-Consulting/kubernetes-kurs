@@ -1,4 +1,4 @@
-apiVersion: apps/v1
+apiVersion: apps/v1beta2 ## for 1.9 use apps/v1
 kind: Deployment
 metadata:
   name: cheatsheet
@@ -9,28 +9,28 @@ spec:
   selector:
     matchLabels:
       app: cheatsheet
-template:
-  metadata:
-    labels:
-      app: cheatsheet      
-  spec:
-    containers:
-    - name: cheatsheet
-      image: sonatconsulting/kubernetes-cheat:1.2
-      ports:
-      - containerPort: 80
-        name: web    
-      readinessProbe:
-        tcpSocket:
-          port: 80
-        initialDelaySeconds: 3
-        periodSeconds: 3
-      livenessProbe:
-        httpGet:
-          path: /
-          port: 80
-        initialDelaySeconds: 5
-        periodSeconds: 5
+  template:
+    metadata:
+      labels:
+        app: cheatsheet      
+    spec:
+      containers:
+      - name: cheatsheet
+        image: sonatconsulting/kubernetes-cheat:1.2
+        ports:
+        - containerPort: 80
+          name: web    
+        readinessProbe:
+          tcpSocket:
+            port: 80
+          initialDelaySeconds: 3
+          periodSeconds: 3
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 80
+          initialDelaySeconds: 5
+          periodSeconds: 5
  
 
         
